@@ -95,13 +95,48 @@ python task_a.py
 
 ### 🔹 Model A (`task_a.ipynb`)
 
-**Architecture:** Custom CNN for binary classification
+```bash
+# Binary Classifier 
+class BinaryClassifier(nn.Module):
+    def __init__(self, embedding_dim=512):
+        super().__init__()
+        self.classifier = nn.Sequential(
+            nn.Linear(embedding_dim, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(512, 256),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(256, 1),
+            nn.Sigmoid()
+        )
 
+    def forward(self, x):
+        return self.classifier(x)
+```
+
+**Architecture:** Custom CNN for binary classification
 * Multiple convolution + pooling layers
 * Fully connected output layer for 2 classes
 * Simpler baseline compared to FaceNet pipeline
 
 ### 🔶 Model B (`task_b.ipynb`)
+
+```bash
+class ClassifierHead(nn.Module):
+    def __init__(self, embedding_dim=512, num_classes=10):
+        super().__init__()
+        self.classifier = nn.Sequential(
+            nn.Linear(embedding_dim, 256),
+            nn.ReLU(),
+            nn.Dropout(0.4),
+            nn.Linear(256, num_classes)
+        )
+
+    def forward(self, x):
+        return self.classifier(x)
+```
 
 **Architecture:** Frozen pretrained FaceNet + custom classifier
 
