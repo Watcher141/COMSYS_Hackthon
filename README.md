@@ -12,8 +12,8 @@ This repository contains solutions for **multiclass face recognition** and **bin
 1. **Clone this repository**
 
 ```bash
-git clone https://github.com/your-username/CMOS-Face-Recognition.git
-cd CMOS-Face-Recognition
+git clone https://github.com/your-username/CMOSYS-Face-Recognition.git
+cd CMOSYS-Face-Recognition
 ```
 
 2. **Prepare the dataset** in the following structure:
